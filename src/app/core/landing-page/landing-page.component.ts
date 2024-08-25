@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 declare var google: any;
 
@@ -16,7 +17,7 @@ export class LandingPageComponent implements OnInit{
 
   ngOnInit(): void {
     google.accounts.id.initialize({
-      client_id: '1054571797188-33le97tbg52svngevk92ogbkths7tu6l.apps.googleusercontent.com',
+      client_id: environment.GOOGLE_CLIENT_ID,
       callback: (response: any) => this.handleLogin(response)
     });
     google.accounts.id.renderButton(document.getElementById("google-btn"), {
